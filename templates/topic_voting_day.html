@@ -1,0 +1,95 @@
+{% extends "topic_voter_registration.html" %}
+
+{% block content %}
+<a href="/" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+
+<div class="topic-container">
+    <div class="topic-header">
+        <h1>Voting Day</h1>
+        <p>EVM, VVPAT, and booth process</p>
+    </div>
+
+    <div class="topic-section">
+        <h2>Before Polling Begins</h2>
+        <ul class="topic-list">
+            <li>Mock Poll conducted in presence of party agents</li>
+            <li>EVM tested with sample votes — result verified and cleared</li>
+            <li>Presiding Officer seals Ballot Unit compartment</li>
+            <li>Polling agents of all candidates take positions</li>
+        </ul>
+    </div>
+
+    <div class="topic-section">
+        <h2>Voting Hours</h2>
+        <div class="fact-box">
+            <strong>7:00 AM to 6:00 PM (standard)</strong><br>
+            Extended hours in certain states/constituencies. Anyone in queue at closing time must be allowed to vote.
+        </div>
+    </div>
+
+    <div class="topic-section">
+        <h2>Step-by-Step Booth Process</h2>
+        <ol class="topic-list" style="list-style-type: decimal;">
+            <li><strong>Step 1</strong> &rarr; Voter enters booth, presents ID to Polling Officer</li>
+            <li><strong>Step 2</strong> &rarr; Polling Officer verifies name in Electoral Roll, marks register</li>
+            <li><strong>Step 3</strong> &rarr; Indelible ink applied to left index finger (prevents double voting)</li>
+            <li><strong>Step 4</strong> &rarr; Voter signs/thumbprints Form 17A (Register of Voters)</li>
+            <li><strong>Step 5</strong> &rarr; Presiding Officer presses Ballot Button on Control Unit</li>
+            <li><strong>Step 6</strong> &rarr; Voter enters screened compartment, presses button on Ballot Unit</li>
+            <li><strong>Step 7</strong> &rarr; VVPAT prints slip — visible for 7 seconds through glass window</li>
+            <li><strong>Step 8</strong> &rarr; Slip drops into sealed VVPAT drop-box. Beep confirms vote recorded</li>
+            <li><strong>Step 9</strong> &rarr; Voter exits booth</li>
+        </ol>
+    </div>
+
+    <div class="topic-section">
+        <h2>EVM Key Facts</h2>
+        <ul class="topic-list">
+            <li>Max 2,000 votes per EVM</li>
+            <li>Max 384 candidates (24 Ballot Units)</li>
+            <li>6V alkaline battery — no electricity needed</li>
+            <li>No internet, Bluetooth, or wireless connection</li>
+            <li>Tamper-proof — standalone machine</li>
+        </ul>
+    </div>
+
+    <div class="topic-section">
+        <h2>VVPAT Facts</h2>
+        <ul class="topic-list">
+            <li>Mandated by Supreme Court in Subramanian Swamy v. ECI (2013)</li>
+            <li>Paper slip visible for 7 seconds</li>
+            <li>2% of VVPATs verified before result certification</li>
+            <li>Accessible only to authorised polling officials</li>
+        </ul>
+    </div>
+
+    <div class="topic-section">
+        <h2>Special Voting Facilities</h2>
+        <table class="topic-table">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Facility</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Senior Citizens (85+)</td><td>Home voting via Postal Ballot</td></tr>
+                <tr><td>Persons with Disability</td><td>Home voting + accessible booth</td></tr>
+                <tr><td>Armed Forces</td><td>Postal Ballot (Service Voters)</td></tr>
+                <tr><td>Election Duty Officials</td><td>Postal Ballot / EDC</td></tr>
+                <tr><td>NRIs</td><td>Must vote in person at registered constituency</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="topic-section">
+        <h2>Indelible Ink</h2>
+        <ul class="topic-list">
+            <li>Applied on left index finger</li>
+            <li>Manufactured by Mysore Paints & Varnish Ltd</li>
+            <li>Stays for 2–4 weeks — impossible to remove</li>
+            <li>Purpose: Prevent double voting</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+
+{% block head %}
+<style>
+.hero {
+    height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero h1 {
+    font-size: 64px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, var(--saffron), var(--navy));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeInDown 1s ease-out;
+}
+
+.hero p {
+    font-size: 20px;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    max-width: 600px;
+    animation: fadeInUp 1s ease-out 0.3s backwards;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    animation: fadeInUp 1s ease-out 0.6s backwards;
+}
+
+.stats-bar {
+    background: rgba(0,0,0,0.05);
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-item h4 {
+    font-size: 28px;
+    color: var(--saffron);
+    margin-bottom: 5px;
+}
+
+.stat-item span {
+    font-size: 14px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Floating icons background */
+.floating-icons {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.floating-icons i {
+    position: absolute;
+    color: var(--saffron-light);
+    animation: floatUp 15s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="hero">
+    <div class="floating-icons" id="floatingIcons"></div>
+    <h1>Understand Your Vote.<br>Shape Your Nation.</h1>
+    <p>Discover everything you need to know about the Indian Electoral Process in a simple, engaging, and interactive way.</p>
+    <div class="cta-buttons">
+        <a href="/learn" class="btn-primary">Start Learning</a>
+        <a href="/quiz" class="btn-secondary">Take the Quiz</a>
+    </div>
+</div>
+
+<div class="stats-bar">
+    <div class="stat-item">
+        <h4>946M+</h4>
+        <span>Registered Voters</span>
+    </div>
+    <div class="stat-item">
+        <h4>28</h4>
+        <span>States</span>
+    </div>
+    <div class="stat-item">
+        <h4>543</h4>
+        <span>Lok Sabha Seats</span>
+    </div>
+    <div class="stat-item">
+        <h4>100%</h4>
+        <span>Free Education</span>
+    </div>
+</div>
+
+<h2 class="section-title">Explore Topics</h2>
+<div class="cards-grid">
+    <div class="spotify-card" onclick="window.location='/topic/voter-registration'">
+        <div class="card-img-wrapper"><i class="fa-solid fa-address-card"></i></div>
+        <h3>Voter Registration</h3>
+        <p>Learn how to get on the electoral roll.</p>
+    </div>
+    <div class="spotify-card" onclick="window.location='/topic/nomination'">
+        <div class="card-img-wrapper"><i class="fa-solid fa-file-signature"></i></div>
+        <h3>Nomination Process</h3>
+        <p>How candidates file to run for office.</p>
+    </div>
+    <div class="spotify-card" onclick="window.location='/topic/campaign'">
+        <div class="card-img-wrapper"><i class="fa-solid fa-bullhorn"></i></div>
+        <h3>Election Campaign</h3>
+        <p>Rules, spending limits, and MCC.</p>
+    </div>
+    <div class="spotify-card" onclick="window.location='/topic/voting-day'">
+        <div class="card-img-wrapper"><i class="fa-solid fa-person-booth"></i></div>
+        <h3>Voting Day</h3>
+        <p>EVM, VVPAT, and booth process.</p>
+    </div>
+    <div class="spotify-card" onclick="window.location='/topic/counting'">
+        <div class="card-img-wrapper"><i class="fa-solid fa-square-poll-vertical"></i></div>
+        <h3>Counting & Results</h3>
+        <p>How votes are tallied and declared.</p>
+    </div>
+    <div class="spotify-card" onclick="window.location='/topic/eci'">
+        <div class="card-img-wrapper"><i class="fa-solid fa-building-columns"></i></div>
+        <h3>Election Commission</h3>
+        <p>The body that runs it all.</p>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Generate floating icons
+    const iconsContainer = document.getElementById('floatingIcons');
+    const iconClasses = ['fa-check-to-slot', 'fa-person-booth', 'fa-envelope', 'fa-id-card', 'fa-landmark'];
+    
+    for (let i = 0; i < 20; i++) {
+        const icon = document.createElement('i');
+        const randomIcon = iconClasses[Math.floor(Math.random() * iconClasses.length)];
+        icon.className = `fa-solid ${randomIcon}`;
+        
+        const size = Math.random() * 30 + 20;
+        icon.style.fontSize = `${size}px`;
+        icon.style.left = `${Math.random() * 100}%`;
+        icon.style.animationDuration = `${Math.random() * 10 + 10}s`;
+        icon.style.animationDelay = `${Math.random() * 10}s`;
+        
+        iconsContainer.appendChild(icon);
+    }
+</script>
+{% endblock %}

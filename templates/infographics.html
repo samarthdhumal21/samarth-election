@@ -1,0 +1,213 @@
+{% extends "base.html" %}
+
+{% block head %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.chart-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.chart-card h3 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    text-align: center;
+    color: var(--saffron);
+}
+
+.downloads-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.download-card {
+    background: linear-gradient(135deg, rgba(0,0,0,0.05) 0%, var(--glass-bg) 100%);
+    padding: 30px 20px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.download-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--saffron);
+}
+
+.download-card i.icon-main {
+    font-size: 48px;
+    color: var(--saffron);
+    margin-bottom: 20px;
+}
+
+.download-card h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.download-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<h1 class="section-title">Election Data & Infographics</h1>
+
+<div class="charts-grid">
+    <!-- Chart 1 -->
+    <div class="chart-card">
+        <h3>Voter Turnout % (1951 - 2024)</h3>
+        <canvas id="turnoutChart"></canvas>
+    </div>
+
+    <!-- Chart 2 -->
+    <div class="chart-card">
+        <h3>Lok Sabha Seat Distribution (2024)</h3>
+        <div style="width: 80%; margin: 0 auto;">
+            <canvas id="seatChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Chart 3 -->
+    <div class="chart-card">
+        <h3>Growth of Registered Voters (Millions)</h3>
+        <canvas id="votersChart"></canvas>
+    </div>
+</div>
+
+<h2 class="section-title">Downloadable Educational Posters</h2>
+<div class="downloads-grid">
+    <div class="download-card">
+        <i class="fa-solid fa-microchip icon-main"></i>
+        <h4>How an EVM Works</h4>
+        <p>A detailed breakdown of the Ballot Unit, Control Unit, and VVPAT system used in Indian elections.</p>
+        <a href="/info/evm" target="_blank" class="btn-primary" style="padding: 10px 20px;"><i class="fa-solid fa-download"></i> Download Infographic</a>
+    </div>
+    
+    <div class="download-card">
+        <i class="fa-solid fa-timeline icon-main"></i>
+        <h4>Timeline of Elections</h4>
+        <p>The step-by-step process from the announcement of poll dates to the final declaration of results.</p>
+        <a href="/info/timeline" target="_blank" class="btn-primary" style="padding: 10px 20px;"><i class="fa-solid fa-download"></i> Download Infographic</a>
+    </div>
+    
+    <div class="download-card">
+        <i class="fa-solid fa-landmark-dome icon-main"></i>
+        <h4>Who is the ECI?</h4>
+        <p>Understand the powers, composition, and functions of the Election Commission of India.</p>
+        <a href="/info/eci" target="_blank" class="btn-primary" style="padding: 10px 20px;"><i class="fa-solid fa-download"></i> Download Infographic</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    Chart.defaults.color = '#1d1d1f';
+    Chart.defaults.font.family = "'-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', sans-serif";
+
+    // Chart 1: Bar Chart
+    const ctx1 = document.getElementById('turnoutChart').getContext('2d');
+    new Chart(ctx1, {
+        type: 'bar',
+        data: {
+            labels: ['1951', '1967', '1977', '1989', '1999', '2009', '2014', '2019', '2024'],
+            datasets: [{
+                label: 'Turnout (%)',
+                data: [45.7, 61.0, 60.5, 62.0, 59.9, 58.2, 66.4, 67.4, 65.8],
+                backgroundColor: '#FF9933',
+                borderRadius: 6
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    grid: { color: 'rgba(0,0,0,0.05)' }
+                },
+                x: {
+                    grid: { display: false }
+                }
+            }
+        }
+    });
+
+    // Chart 2: Pie Chart
+    const ctx2 = document.getElementById('seatChart').getContext('2d');
+    new Chart(ctx2, {
+        type: 'doughnut',
+        data: {
+            labels: ['NDA', 'INDIA Bloc', 'Others'],
+            datasets: [{
+                data: [293, 234, 16],
+                backgroundColor: ['#FF9933', '#138808', '#000080'],
+                borderWidth: 2,
+                borderColor: '#ffffff',
+                hoverOffset: 6
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'bottom' }
+            }
+        }
+    });
+
+    // Chart 3: Line Chart
+    const ctx3 = document.getElementById('votersChart').getContext('2d');
+    new Chart(ctx3, {
+        type: 'line',
+        data: {
+            labels: ['1951', '1971', '1991', '2004', '2014', '2019', '2024'],
+            datasets: [{
+                label: 'Registered Voters (Millions)',
+                data: [173, 274, 498, 671, 834, 911, 968],
+                borderColor: '#138808',
+                backgroundColor: 'rgba(19, 136, 8, 0.15)',
+                tension: 0.4,
+                fill: true,
+                pointBackgroundColor: '#138808',
+                pointBorderColor: '#ffffff',
+                pointBorderWidth: 2,
+                pointRadius: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: {
+                    grid: { color: 'rgba(0,0,0,0.05)' }
+                },
+                x: {
+                    grid: { display: false }
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

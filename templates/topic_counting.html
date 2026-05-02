@@ -1,0 +1,82 @@
+{% extends "topic_voter_registration.html" %}
+
+{% block content %}
+<a href="/" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+
+<div class="topic-container">
+    <div class="topic-header">
+        <h1>Counting & Results</h1>
+        <p>How votes are tallied and declared</p>
+    </div>
+
+    <div class="topic-section">
+        <h2>Before Counting</h2>
+        <ul class="topic-list">
+            <li>EVMs stored in Strong Rooms under double-lock system</li>
+            <li>24×7 CCTV surveillance + two-tier security (CAPF)</li>
+            <li>RO visits strong rooms twice daily</li>
+            <li>Candidates/agents can observe strong rooms</li>
+        </ul>
+    </div>
+
+    <div class="topic-section">
+        <h2>Counting Day Process</h2>
+        
+        <div class="fact-box">
+            <strong>Step 1 — Postal Ballots First</strong><br>
+            Postal ballots are counted before EVM votes. Results announced separately.
+        </div>
+        
+        <div class="fact-box">
+            <strong>Step 2 — EVM Counting Rounds</strong><br>
+            Each round = votes from one polling booth's EVM. Results displayed on Control Unit screen. Agents of all candidates observe each round. Results recorded in Form 20 (Final Result Sheet).
+        </div>
+        
+        <div class="fact-box">
+            <strong>Step 3 — VVPAT Verification</strong><br>
+            2% of VVPATs per constituency randomly selected. Physical paper slips matched against EVM count. Any mismatch triggers investigation.
+        </div>
+        
+        <div class="fact-box">
+            <strong>Step 4 — Round-by-Round Tabulation</strong><br>
+            All booth results added up. Running totals updated after each round. Trends visible from Round 1 itself.
+        </div>
+        
+        <div class="fact-box">
+            <strong>Step 5 — Declaration of Result</strong><br>
+            Returning Officer announces the winner. Winner receives Certificate of Election. Results notified in the Official Gazette.
+        </div>
+    </div>
+
+    <div class="topic-section">
+        <h2>Key Rules</h2>
+        <ul class="topic-list">
+            <li>Counting starts at 8:00 AM on Counting Day</li>
+            <li>Conducted under Election Observer supervision</li>
+            <li>Strict entry — only authorised persons with valid passes</li>
+            <li>Mobile phones not allowed inside counting hall</li>
+            <li>Re-counting can be demanded if margin is very thin</li>
+        </ul>
+    </div>
+
+    <div class="topic-section">
+        <h2>Re-Poll Conditions</h2>
+        <p style="margin-bottom: 10px;">ECI can order re-polling if:</p>
+        <ul class="topic-list">
+            <li>Booth capturing occurred</li>
+            <li>EVM malfunctioned seriously</li>
+            <li>Natural disaster disrupted polling</li>
+            <li>Post-poll scrutiny reveals serious irregularities</li>
+        </ul>
+    </div>
+
+    <div class="topic-section">
+        <h2>Election Petition</h2>
+        <ul class="topic-list">
+            <li>Filed in High Court within 45 days of result declaration</li>
+            <li>Grounds: Bribery, corruption, impersonation, exceeding expenditure limit</li>
+            <li>Court can declare election void or declare another candidate winner</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
