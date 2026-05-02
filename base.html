@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectVerse - Understand Your Vote</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div class="sidebar">
+        <a href="/" class="logo-container">
+            <i class="fa-solid fa-check-to-slot"></i>
+            <span>ElectVerse</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="/" class="{% if request.path == '/' %}active{% endif %}"><i class="fa-solid fa-house"></i> <span>Home</span></a></li>
+            <li><a href="/learn" class="{% if request.path == '/learn' %}active{% endif %}"><i class="fa-solid fa-book-open"></i> <span>Learn</span></a></li>
+            <li><a href="/quiz" class="{% if request.path == '/quiz' %}active{% endif %}"><i class="fa-solid fa-gamepad"></i> <span>Quiz</span></a></li>
+            <li><a href="/glossary" class="{% if request.path == '/glossary' %}active{% endif %}"><i class="fa-solid fa-book-bookmark"></i> <span>Glossary</span></a></li>
+            <li><a href="/infographics" class="{% if request.path == '/infographics' %}active{% endif %}"><i class="fa-solid fa-chart-line"></i> <span>Infographics</span></a></li>
+            <li><a href="/about" class="{% if request.path == '/about' %}active{% endif %}"><i class="fa-solid fa-circle-info"></i> <span>About</span></a></li>
+        </ul>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="topbar">
+            <button class="help-btn" onclick="document.getElementById('faqModal').classList.add('active')">
+                <i class="fa-regular fa-circle-question"></i> Need Help?
+            </button>
+        </div>
+        
+        <div class="main-content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="faqModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="document.getElementById('faqModal').classList.remove('active')">&times;</button>
+            <h2 style="margin-bottom: 20px;">Frequently Asked Questions</h2>
+            <div style="margin-bottom: 15px;">
+                <strong>How do I register to vote?</strong>
+                <p style="color: var(--text-muted); font-size: 14px; margin-top: 5px;">Visit voters.eci.gov.in and fill out Form 6. You need to be 18+ and have a valid address proof.</p>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <strong>What if I forgot my Voter ID?</strong>
+                <p style="color: var(--text-muted); font-size: 14px; margin-top: 5px;">You can use one of 12 alternative IDs like Aadhaar, PAN Card, Driving License, or Passport to cast your vote.</p>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <strong>How can I find my polling booth?</strong>
+                <p style="color: var(--text-muted); font-size: 14px; margin-top: 5px;">You can search using your EPIC number on the ECI website or the Voter Helpline App.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- BotChat Assistant -->
+    <div class="botchat-button" onclick="toggleBotChat()">
+        <i class="fa-solid fa-robot"></i>
+    </div>
+    
+    <div class="botchat-window" id="botChatWindow">
+        <div class="botchat-header">
+            <div>
+                <i class="fa-solid fa-robot"></i> <strong>BotChat</strong>
+            </div>
+            <button class="botchat-close" onclick="toggleBotChat()">&times;</button>
+        </div>
+        <div class="botchat-messages" id="botChatMessages">
+            <div class="chat-message bot-message">Namaste! I am BotChat, your Election Assistant. How can I help you understand your vote today?</div>
+        </div>
+        <div class="botchat-input-area">
+            <input type="text" id="botChatInput" placeholder="Ask about EVM, voting, laws..." onkeypress="handleBotChatInput(event)">
+            <button onclick="sendBotChatMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+    
+    {% block scripts %}{% endblock %}
+    <script src="{{ url_for('static', filename='js/botchat.js') }}"></script>
+</body>
+</html>

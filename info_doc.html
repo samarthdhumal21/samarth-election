@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block head %}
+<style>
+.doc-container {
+    background-color: var(--text-main);
+    color: var(--bg-color);
+    padding: 40px;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.doc-header {
+    text-align: center;
+    border-bottom: 2px solid var(--saffron);
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+.doc-header h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+.doc-header p {
+    color: #666;
+    font-size: 14px;
+}
+.doc-section {
+    margin-bottom: 30px;
+}
+.doc-section h2 {
+    font-size: 20px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    color: var(--text-main);
+    padding: 10px 15px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+.doc-item {
+    margin-bottom: 15px;
+    padding-left: 15px;
+    border-left: 3px solid var(--saffron);
+}
+.doc-item strong {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+.doc-item p {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 20px;">
+    <a href="/infographics" class="btn-secondary" style="padding: 8px 16px;"><i class="fa-solid fa-arrow-left"></i> Back to Infographics</a>
+</div>
+
+<div class="doc-container">
+    <div class="doc-header">
+        <h1>{{ title }}</h1>
+        <p>Electoral Process of India - Official Educational Reference Document</p>
+    </div>
+
+    {% if doc_type == 'evm' %}
+    <div class="doc-section">
+        <h2>SECTION I — HOW AN ELECTRONIC VOTING MACHINE (EVM) WORKS</h2>
+        <p style="margin-bottom: 20px; font-size: 14px; color: #444;">The Electronic Voting Machine (EVM) constitutes the primary instrument of democratic franchise in the Republic of India. Mandated by the Election Commission of India (ECI) pursuant to Section 61A of the Representation of the People Act, 1951, the EVM is an electronically sealed, standalone, tamper-evident apparatus.</p>
+        
+        <h3 style="margin-bottom: 10px; color: var(--saffron);">BALLOT UNIT</h3>
+        <ul style="margin-bottom: 20px; padding-left: 20px; font-size: 14px; color: #333;">
+            <li style="margin-bottom: 5px;">Placed inside the screened voting compartment (voter privacy).</li>
+            <li style="margin-bottom: 5px;">Displays candidates' names, party symbols & serial numbers.</li>
+            <li style="margin-bottom: 5px;">Blue illuminated button assigned to each candidate.</li>
+            <li style="margin-bottom: 5px;">Pressing button records vote & triggers audible beep.</li>
+            <li style="margin-bottom: 5px;">Connected to Control Unit via a 5-metre cable.</li>
+        </ul>
+
+        <h3 style="margin-bottom: 10px; color: var(--saffron);">CONTROL UNIT</h3>
+        <ul style="margin-bottom: 20px; padding-left: 20px; font-size: 14px; color: #333;">
+            <li style="margin-bottom: 5px;">Retained exclusively by the Presiding Officer at polling desk.</li>
+            <li style="margin-bottom: 5px;">Features: Ballot, Result, Close, Print & Clear buttons.</li>
+            <li style="margin-bottom: 5px;">Stores all votes in non-volatile memory (no internet).</li>
+            <li style="margin-bottom: 5px;">Powered by a 6V alkaline battery — no electricity needed.</li>
+        </ul>
+        
+        <h3 style="margin-bottom: 10px; color: var(--saffron);">VOTER VERIFIABLE PAPER AUDIT TRAIL (VVPAT)</h3>
+        <ul style="margin-bottom: 20px; padding-left: 20px; font-size: 14px; color: #333;">
+            <li style="margin-bottom: 5px;">An independent verification system attached to the EVM.</li>
+            <li style="margin-bottom: 5px;">Upon casting a vote, VVPAT prints a slip displaying the candidate's serial number, name, and party symbol.</li>
+            <li style="margin-bottom: 5px;">Slip is visible through a transparent glass window for 7 seconds.</li>
+        </ul>
+    </div>
+    {% elif doc_type == 'eci' %}
+    <div class="doc-section">
+        <h2>SECTION II — THE ELECTION COMMISSION OF INDIA (ECI)</h2>
+        <p style="margin-bottom: 20px; font-size: 14px; color: #444;">The Election Commission of India is a permanent, independent, and autonomous constitutional authority established under Article 324 of the Constitution of India. It is vested with the superintendence, direction, and control of the preparation of electoral rolls and the conduct of elections.</p>
+        
+        <div class="doc-item">
+            <strong>Date of Establishment</strong>
+            <p>25th January 1950 (National Voters' Day)</p>
+        </div>
+        <div class="doc-item">
+            <strong>Constitutional Provision</strong>
+            <p>Article 324 of the Constitution of India</p>
+        </div>
+        <div class="doc-item">
+            <strong>Composition</strong>
+            <p>1 Chief Election Commissioner (CEC) + 2 Election Commissioners</p>
+        </div>
+        <div class="doc-item">
+            <strong>Jurisdiction</strong>
+            <p>Parliament, State Legislatures, President & Vice-President elections</p>
+        </div>
+        <div class="doc-item">
+            <strong>Headquarters</strong>
+            <p>Nirvachan Sadan, Ashoka Road, New Delhi — 110 001</p>
+        </div>
+        <div class="doc-item">
+            <strong>Key Legislation</strong>
+            <p>Representation of the People Act, 1950 & 1951</p>
+        </div>
+    </div>
+    {% elif doc_type == 'timeline' %}
+    <div class="doc-section">
+        <h2>SECTION III — ELECTORAL PROCESS TIMELINE AT A GLANCE</h2>
+        <p style="margin-bottom: 20px; font-size: 14px; color: #444;">The electoral process in India follows a meticulously sequenced schedule promulgated by the Election Commission of India. Each phase is regulated by the Representation of the People Act, 1951.</p>
+        
+        <div class="doc-item">
+            <strong>DAY 1: Press Conference & MCC Enforcement</strong>
+            <p>The ECI convenes a press conference to announce the official poll schedule. The Model Code of Conduct (MCC) enters immediate legal force.</p>
+        </div>
+        <div class="doc-item">
+            <strong>WK 2–4: Gazette Notification, Nomination & Scrutiny</strong>
+            <p>Candidates file nomination papers before the Returning Officer. Scrutiny follows; defective or fraudulent nominations are summarily rejected.</p>
+        </div>
+        <div class="doc-item">
+            <strong>WK 4–8: Campaigning Phase</strong>
+            <p>Political parties and candidates campaign under ECI supervision. Expenditure limits apply. Campaigning ceases 48 hours prior to polling ('Silent Period').</p>
+        </div>
+        <div class="doc-item">
+            <strong>POLL DAY: Electronic Voting — Polling Day</strong>
+            <p>Polling stations operate 07:00–18:00 hrs. Voters cast ballots via EVM-VVPAT. Central Armed Police Forces (CAPF) deployed.</p>
+        </div>
+        <div class="doc-item">
+            <strong>RESULT: Vote Counting & Declaration of Results</strong>
+            <p>Counting commences at the designated Counting Centre. EVM results tallied round-by-round. The winning candidate receives a Certificate of Election.</p>
+        </div>
+    </div>
+    {% endif %}
+    
+    <div style="text-align: center; margin-top: 40px;">
+        <button class="btn-primary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print / Save as PDF</button>
+    </div>
+</div>
+{% endblock %}
